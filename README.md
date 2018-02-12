@@ -43,7 +43,7 @@ Kafka Installation Steps
    a. Service Setup:
    	- Name: kafka-101
    	- Image: duplocloud/kafka:kafka_v2
-   	- Env: { "JMX_PORT": 9999, "ZOOKEEPER_HOSTS":"<dnsname>:2181", "HOST_SUFFIX":".<dnsdomain>" } where dns name is shown in the column called dns in the services tab next to the service zk-exhibitor-1 (for example kafka-manager-kafka.duplopoc.net) where domainsuffix is the part of the dns name after kafka-101 (for example -kafka.duplopoc.net assuming kafka is the name of the duplo tenant)
+   	- Env: { "JMX_PORT": 9999, "ZOOKEEPER_HOSTS":"<dnsname>:2181", "HOST_SUFFIX":".<dnsdomain>" } where dns name is shown in the column called dns in the services tab next to the service zk-exhibitor-1 (for example zk-exhibitor-1-kafka.duplopoc.net) where domainsuffix is the part of the dns name after zk-exhibitor-1 (for example -kafka.duplopoc.net assuming kafka is the name of the duplo tenant). Basically domainsuffix is part of the dns name that is constant for all services within the tenant. Typically it is "-<tenantname>.<domainoftheorg>" where domainoftheorg is constant per duplo deployment.
    	- Allocation tag: kafka-101
    	- Volume Mount: "/mnt/kafkadata1:/mnt/kafkadata1"
    	- Docker Host config: {"NetworkMode": "host", "CapAdd": [ "NET_ADMIN" ]}

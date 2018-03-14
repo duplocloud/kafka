@@ -14,8 +14,8 @@ Zookeepeer Installation Steps
 		sudo reboot
 
 2. S3 setup
-   a. Create an S3 bucket called zookeeper and a folder inside it called configs
-   b. In the file zookeeper/exhibitor-s3.conf replace the 10.77.x.x IP address of the EC2 instance IP above and upload the file into the above s3 folder
+   a. Go to the TAB Aws--> + sign above the first table and Create an S3 bucket called zookeeper. Now select this S3 bucket in the table and click on AWS console button. In the AWS UI create a folder inside this bucket called configs
+   b. from the kafka repo there will be a file  zkexhibitor/exhibitor-s3.conf replace the 10.77.x.x IP address of the EC2 instance IP above and upload the file into the above s3 folder
 
 3. Microservice setup
    a. Service Setup:
@@ -63,4 +63,8 @@ Kafka Manager setup
 		- Image: duplocloud/kafka:manager_v0
 		- Env: { "ZK_HOSTS": "zk-exhibitor-1-kafka.duplopoc.net:2181"}
 
+Testing Kafka: get kafka_2.11-0.11.0.2.tgz and unzip
+	a. Create Topic: bin/kafka-topics.sh --create --zookeeper zk-exhibitor-1-acme01.duplopoc.net:2181/kafka --replication-factor 1 --partitions 1 --topic sub1
+	b. Producing: bin/kafka-console-producer.sh --broker-list kafka-101-analytics02.duplopoc.net:9092 --topic sub1
+	b. Consuming: bin/kafka-console-consumer.sh --bootstrap-server http://kafka-101-acme01.duplopoc.net:9092 --topic sub1 --from-beginning
 
